@@ -10,7 +10,21 @@
 
 # Create a default user
 user = User.where(email: "test@tylermyracle.com").first_or_initialize
-user.update!(
-  password: "password",
-  password_confirmation: "password"
-)
+if !user.id
+  user.update(
+    password: "password",
+    password_confirmation: "password"
+  )
+end
+
+if Rails.env.development?
+  100.times do |i|
+    blog_post = BlogPost.where(title: "Blog Post #{i}").first_or_initialize
+    blog_post.update(
+      title: "Blog Post #{i}",
+      content: "This is the content for Blog Post #{i}",
+      published_at: Time.current
+    )
+  end
+end
+

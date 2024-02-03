@@ -4,6 +4,9 @@ class BlogPostsController < ApplicationController
 
   def index
     @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
+    @pagy, @blog_posts = pagy(@blog_posts)
+  rescue Pagy::OverflowError
+    redirect_to root_path
   end
 
   def show
@@ -34,8 +37,9 @@ class BlogPostsController < ApplicationController
   end
 
   def destroy
+    @blog_post = BlogPost.find(params[:id])
     @blog_post.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: "Blog post was successfully deleted."
   end
 
   private

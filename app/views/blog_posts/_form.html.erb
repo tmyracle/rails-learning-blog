@@ -27,7 +27,9 @@
   </div>
 
   <div class="flex justify-end items-center space-x-4">
-    <%= button_to "Delete", @blog_post, method: :delete, data: {turbo_confirm: "Are you sure?"}, class: "blog-button-danger" %>
-    <%= form.button class: "blog-button" %>
+    <% if blog_post.persisted? %>
+      <%= link_to "Delete", blog_post, method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "blog-button-danger" %>
+    <% end %>
+    <%= form.submit class: "blog-button" %>
   </div>
 <% end %>

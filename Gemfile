@@ -47,6 +47,12 @@ gem "erb_lint", require: false
 
 gem "better_html"
 
+gem "devise", "~> 4.9"
+
+gem "tailwindcss-rails", "~> 2.3"
+
+gem "pagy", "~> 6.4"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
@@ -71,7 +77,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "devise", "~> 4.9"
-
-gem "tailwindcss-rails", "~> 2.3"
