@@ -1,18 +1,20 @@
 <h1>My blog</h1>
-<% @blog_posts.each do |blog_post| %>
-  <div>
-    <div class="flex flex-cols items-center gap-x-4">
-      <div class="text-2xl font-bold"><%= link_to blog_post.title, blog_post %></div>
-      <% if blog_post.draft? %>
-        <div class="bg-gray-200 text-sm font-medium text-gray-900 px-4 py-2 rounded-full w-fit">
-          Draft
-        </div>
-      <% elsif blog_post.scheduled? %>
-        <div class="bg-blue-200 text-sm font-medium text-blue-900 px-4 py-2 rounded-full w-fit">
-          Scheduled
-        </div>
-      <% end %>
+<div class="flex flex-col space-y-4">
+  <% @blog_posts.each do |blog_post| %>
+    <div class="p-4 rounded-md border border-gray-200 shadow-sm">
+      <div class="flex flex-cols items-center gap-x-4">
+        <div class="text-2xl font-bold"><%= link_to blog_post.title, blog_post %></div>
+        <% if blog_post.draft? %>
+          <div class="bg-gray-200 text-sm font-medium text-gray-900 px-4 py-2 rounded-full w-fit">
+            Draft
+          </div>
+        <% elsif blog_post.scheduled? %>
+          <div class="bg-blue-200 text-sm font-medium text-blue-900 px-4 py-2 rounded-full w-fit">
+            Scheduled
+          </div>
+        <% end %>
+      </div>
+      <p><%= blog_post.content %></p>
     </div>
-    <p><%= blog_post.content %></p>
-  </div>
-<% end %>
+  <% end %>
+</div>

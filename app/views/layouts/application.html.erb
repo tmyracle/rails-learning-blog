@@ -19,8 +19,13 @@
 
     <div>
       <% if user_signed_in? %>
-        <%= link_to "New blog post", new_blog_post_path %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+        <div class="flex flex-row justify-between items-center mb-8">
+          <%= link_to "Home", blog_posts_path, class: "blog-button-secondary" %>
+          <div class="space-x-4 flex flex-row items-center">
+            <%= link_to "New blog post", new_blog_post_path, class: "blog-button" %>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "blog-button-secondary" %>
+          </div>
+        </div>
       <% end %>
     </div>
 
