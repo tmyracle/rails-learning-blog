@@ -14,6 +14,21 @@
     </div>
 
     <div>
+      <%= form.label :cover_image, class: "blog-input-label mb-2" %>
+      <label for="file_input" class="blog-button">
+        Choose file
+      </label>
+      <span id="file_name" class="pl-2"></span>
+      <% if blog_post.cover_image.present? %>
+        <div id="<%= dom_id(blog_post, :cover_image) %>" class="flex flex-col space-y-2 justify-center items-center">
+          <%= image_tag(blog_post.cover_image, class: "rounded-md shadow-md w-1/2 !mb-2") %>
+          <%= link_to "Remove cover image", blog_post_cover_image_path(blog_post), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "w-fit blog-button-danger" %>
+        </div>
+      <% end %>
+      <%= form.file_field :cover_image, class: "hidden", id: "file_input" %>
+    </div>
+
+    <div>
       <%= form.label :content, class: "blog-input-label" %>
       <%= form.rich_text_area :content, class: "blog-text-area" %>
     </div>

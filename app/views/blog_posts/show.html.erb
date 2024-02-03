@@ -1,3 +1,5 @@
+<%= image_tag(@blog_post.cover_image, class: "rounded-md shadow-md !mt-0") if @blog_post.cover_image.present? %>
+
 <h1>
   <%= @blog_post.title %>
 </h1>
